@@ -127,3 +127,4 @@ D:\Дима проекты\iJunior\Store\obj\Debug\Store.csproj.CopyComplete
 D:\Дима проекты\iJunior\Store\bin\Debug\Store.exe.config
 D:\Дима проекты\iJunior\Store\bin\Debug\Store.exe
 D:\Дима проекты\iJunior\Store\obj\Debug\Store.exe
+D:\Дима проекты\iJunior\Store\obj\Debug\Store.csproj.AssemblyReference.cache

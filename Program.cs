@@ -23,7 +23,7 @@ namespace Store
             Console.ReadKey();
 
             Cart cart = shop.Cart();
-            cart.Add(iPhone12, 10);
+            cart.Add(iPhone12, 4);
             cart.Add(iPhone11, 1);
             //cart.Add(iPhone11, 3); //при такой ситуации возникает ошибка так, как нет нужного количества товара на складе
 

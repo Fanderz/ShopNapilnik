@@ -7,7 +7,7 @@ namespace Store
     {
         private Dictionary<Good, int> _products = new Dictionary<Good, int>();
 
-        public Dictionary<Good, int> Products { get { return _products; } }
+        public IReadOnlyDictionary<Good, int> Products { get { return _products; } }
 
         public virtual void Add(Good product, int count)
         {

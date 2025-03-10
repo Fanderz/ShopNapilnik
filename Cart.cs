@@ -5,17 +5,17 @@ namespace Store
 {
     public class Cart : BaseProducts
     {
-        private Warehouse _warehouse;
+        private Shop _shop;
 
-        public string Paylink { get; private set; }
-
-        public Cart(Warehouse warehouse)
+        public Cart(Shop shop)
         {
-            if (warehouse == null)
+            if (shop == null)
                 throw new ArgumentNullException();
 
-            _warehouse = warehouse;
+            _shop = shop;
         }
+
+        public string Paylink { get; private set; }
 
         public override void Add(Good product, int count)
         {
@@ -25,26 +25,24 @@ namespace Store
             if (count <= 0)
                 throw new ArgumentOutOfRangeException();
 
-            if (_warehouse.Products.TryGetValue(product, out int cnt) && cnt >= count)
-                base.Add(product, count);
-            else
+            if (_shop.HaveGood(product, count) == false)
                 throw new InvalidOperationException();
+
+            base.Add(product, count);
         }
 
         public Cart Order()
         {
-            if (Products.Count > 0)
-            {
-                foreach (KeyValuePair<Good, int> pair in Products)
-                    _warehouse.OnProductOrder(pair.Key, pair.Value);
-
-                Clear();
-                Paylink = "Paylink";
-
-                return this;
-            }
-            else
+            if (Products.Count < 0)
                 throw new InvalidOperationException();
+
+            foreach (KeyValuePair<Good, int> pair in Products)
+                _shop.OrderProduct(pair.Key, pair.Value);
+
+            Clear();
+            Paylink = "Paylink";
+
+            return this;
         }
     }
 }
