@@ -25,15 +25,13 @@ namespace Store
             if (input == string.Empty)
                 throw new ArgumentNullException();
 
-            if (_products.Count > 0)
-            {
-                Console.WriteLine(input);
-
-                foreach (KeyValuePair<Good, int> product in _products)
-                    Console.WriteLine($"{product.Key.Name} в количестве: {product.Value} единиц.");
-            }
-            else
+            if (_products.Count < 0)
                 throw new InvalidOperationException();
+
+            Console.WriteLine(input);
+
+            foreach (KeyValuePair<Good, int> product in _products)
+                Console.WriteLine($"{product.Key.Name} в количестве: {product.Value} единиц.");
         }
 
         protected virtual void Remove(Good product, int count)
